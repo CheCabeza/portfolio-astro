@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import avatar from "../../public/avatar.png";
-import dribble from "../../public/dribble.png";
-import twitter from "../../public/twitter.png";
-import youtube from "../../public/youtube.png";
+import linkedin from "../../public/linkedin.svg";
+import medium from "../../public/medium.svg";
+import twitter from "../../public/twitter.svg";
+import Hamburger from "./Hamburger";
 
 const navMotion = {
   visible: {
@@ -54,44 +54,25 @@ const NavLinks = ({
 
 export default function Nav() {
   const [toggled, setToggled] = useState(false);
+  console.log(linkedin);
   return (
-    <nav className=" relative mx-8 mb-24 flex items-center justify-between pb-6 pt-12 font-medium md:mx-16 lg:mx-32">
-      <svg
-        className="absolute bottom-0 left-1/2 -translate-x-1/2  "
-        width="250"
-        height="4"
-        viewBox="0 0 250 4"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <motion.path
-          animate={{ pathLength: 1, opacity: 1 }}
-          initial={{ pathLength: 0, opacity: 0 }}
-          transition={{ delay: 1, duration: 0.75 }}
-          d="M2 2L428 1.99996"
-          stroke="#282828"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-      </svg>
-
+    <nav className="relative mx-8 mb-24 flex items-center justify-between pb-6 pt-12 font-medium md:mx-16 lg:mx-32 bg-blue">
       <motion.div
         animate={{ opacity: 1, x: 0 }}
         initial={{ opacity: 0, x: -25 }}
         transition={{ delay: 0.35 }}
         className="flex gap-12"
       >
-        <img src={avatar.src} alt="Hua profile picture" />
         <motion.div className="hidden items-center gap-12 xl:flex">
-          <img src={dribble.src} alt="Dribble Account" />
-          <img src={twitter.src} alt="Twitter Account" />
-          <img src={youtube.src} alt="Youtube Channel" />
+          <img src={linkedin.src} alt="Linkedin Account" width={25} />
+          <img src={twitter.src} alt="Twitter Account" width={25} />
+          <img src={medium.src} alt="Youtube Channel" width={25} />
         </motion.div>
       </motion.div>
       {/* Title */}
 
       <h1 className="text-lg font-bold">
-        <a href="/">Hua.</a>
+        <a href="/">Chema Cabeza</a>
       </h1>
 
       {/* Nav Items animating in  */}
@@ -119,31 +100,7 @@ export default function Nav() {
       </motion.div>
 
       {/* Hamburger Toggle */}
-      <motion.div
-        animate={{ opacity: 1, x: 0 }}
-        initial={{ opacity: 0, x: 25 }}
-        transition={{ delay: 0.35 }}
-        onClick={() => setToggled((prevToggle) => !prevToggle)}
-        className={"burger z-50 cursor-pointer space-y-1.5 xl:hidden"}
-      >
-        <motion.span
-          animate={{ rotateZ: toggled ? 45 : 0, y: toggled ? 8 : 0 }}
-          className="line-1 block h-0.5 w-8 bg-content"
-        ></motion.span>
-
-        <motion.span
-          animate={{ width: toggled ? 0 : 24 }}
-          className="line-2 block h-0.5 w-6 bg-content"
-        ></motion.span>
-        <motion.span
-          animate={{
-            rotateZ: toggled ? -45 : 0,
-            y: toggled ? -8 : 0,
-            width: toggled ? 32 : 24,
-          }}
-          className="line-3 block h-0.5 w-4 bg-content"
-        ></motion.span>
-      </motion.div>
+      <Hamburger toggled={toggled} setToggled={setToggled} />
     </nav>
   );
 }
