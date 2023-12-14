@@ -1,9 +1,9 @@
-import avatar from "@publics/avatar.png";
-import dribble from "@publics/dribble.png";
-import twitter from "@publics/twitter.png";
-import youtube from "@publics/youtube.png";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import avatar from "../../public/avatar.png";
+import dribble from "../../public/dribble.png";
+import twitter from "../../public/twitter.png";
+import youtube from "../../public/youtube.png";
 
 const navMotion = {
   visible: {
