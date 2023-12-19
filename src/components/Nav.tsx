@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import linkedin from "../../public/linkedin.svg";
-import medium from "../../public/medium.svg";
-import twitter from "../../public/twitter.svg";
+import github from "../img/github.svg";
+import linkedin from "../img/linkedin.svg";
+import twitter from "../img/twitter.svg";
 import Hamburger from "./Hamburger";
 
 const navMotion = {
@@ -66,7 +66,7 @@ export default function Nav() {
         <motion.div className="hidden items-center gap-12 xl:flex">
           <img src={linkedin.src} alt="Linkedin Account" width={25} />
           <img src={twitter.src} alt="Twitter Account" width={25} />
-          <img src={medium.src} alt="Youtube Channel" width={25} />
+          <img src={github.src} alt="Youtube Channel" width={25} />
         </motion.div>
       </motion.div>
       {/* Title */}
