@@ -1,8 +1,5 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import github from "../img/github.svg";
-import linkedin from "../img/linkedin.svg";
-import twitter from "../img/twitter.svg";
 import Hamburger from "./Hamburger";
 
 const navMotion = {
@@ -28,8 +25,9 @@ const itemMotionDesktop = {
 };
 const navLinks = [
   { name: "Home", href: "/", id: 1 },
-  { name: "Blog", href: "/blog", id: 2 },
-  { name: "Contact", href: "/contact", id: 3 },
+  { name: "About", href: "/about", id: 2 },
+  { name: "Projects", href: "/projects", id: 4 },
+  { name: "Contact", href: "/contact", id: 5 },
 ];
 
 const NavLinks = ({
@@ -52,42 +50,26 @@ const NavLinks = ({
   </div>
 );
 
-export default function Nav() {
+export default function Nav(props: any) {
   const [toggled, setToggled] = useState(false);
   return (
-    <nav className="relative mx-8 mb-24 flex items-center justify-between pb-6 pt-12 font-medium md:mx-16 lg:mx-32 bg-blue">
-      <motion.div
-        animate={{ opacity: 1, x: 0 }}
-        initial={{ opacity: 0, x: -25 }}
-        transition={{ delay: 0.35 }}
-        className="flex gap-12"
-      >
-        <motion.div className="hidden items-center gap-12 xl:flex">
-          <img src={linkedin.src} alt="Linkedin Account" width={25} />
-          <img src={twitter.src} alt="Twitter Account" width={25} />
-          <img src={github.src} alt="Youtube Channel" width={25} />
-        </motion.div>
-      </motion.div>
-      {/* Title */}
-
-      <h1 className="text-lg font-bold">
-        <a href="/">Chema Cabeza</a>
-      </h1>
-
-      {/* Nav Items animating in  */}
+    <nav className="relative mx-8 mb-24 flex justify-end pb-6 pt-12 font-medium md:mx-16 lg:mx-32 bg-blue">
+      {/* Device mode menu  */}
       {toggled && (
-        <motion.div
-          variants={navMotion}
-          animate="visible"
-          initial="hidden"
-          className="fixed left-0 top-0  z-40 flex h-screen
+        <>
+          <motion.div
+            variants={navMotion}
+            animate="visible"
+            initial="hidden"
+            className="fixed left-0 top-0  z-40 flex h-screen
           w-full flex-col items-center  justify-center  gap-24 bg-white text-2xl font-bold"
-        >
-          <NavLinks
-            className=" flex flex-col gap-24 text-lg "
-            isMobile={true}
-          />
-        </motion.div>
+          >
+            <NavLinks
+              className=" flex flex-col gap-24 text-lg "
+              isMobile={true}
+            />
+          </motion.div>
+        </>
       )}
       <motion.div
         animate={{ opacity: 1, x: 0 }}
@@ -96,9 +78,9 @@ export default function Nav() {
         className="hidden xl:flex xl:items-center  xl:justify-center xl:gap-12 xl:text-lg   "
       >
         <NavLinks className="flex gap-12" isMobile={false} />
+        {props.themeIcon}
       </motion.div>
 
-      {/* Hamburger Toggle */}
       <Hamburger toggled={toggled} setToggled={setToggled} />
     </nav>
   );

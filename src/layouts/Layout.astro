@@ -1,7 +1,8 @@
 ---
 const { title } = Astro.props
-import "@fontsource-variable/onest";
+import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import ThemeIcon from './../components/ThemeIcon.astro';
 ---
 
 <html lang="en">
@@ -15,19 +16,32 @@ import Nav from "../components/Nav";
 		<title>{title}</title>
   </head>
   <body>
-    <Nav client:load />
+    <Nav client:load >
+      <ThemeIcon slot="themeIcon"/>
+    </Nav>  
   </body>
 </html>
 <main>
   <slot />
   <!-- your content is injected here -->
-  <footer class="mt-12 bg-black px-8 py-12 md:px-16 lg:px-32">
-    <div></div>
-  </footer>
+  <Footer client:load/>
 </main>
 
 <style>
+  @font-face {
+    font-family:  melody-light;
+    src: url('../../public/BLMelodyMono-Light.otf');
+  }
   body {
-    font-family: 'Onest Variable', sans-serif;
+    font-family: melody-light;
+  }
+
+  html.dark {
+    background-color: #000000;
+    color: #fff;
+  }
+
+  .dark .nav-links a {
+    color: #fff;
   }
 </style>
