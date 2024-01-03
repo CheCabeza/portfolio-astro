@@ -53,23 +53,21 @@ const NavLinks = ({
 export default function Nav(props: any) {
   const [toggled, setToggled] = useState(false);
   return (
-    <nav className="relative mx-8 mb-24 flex justify-end pb-6 pt-12 font-medium md:mx-16 lg:mx-32 bg-blue">
+    <nav className="relative flex justify-end pb-6 pt-12 font-medium bg-blue">
       {/* Device mode menu  */}
       {toggled && (
-        <>
-          <motion.div
-            variants={navMotion}
-            animate="visible"
-            initial="hidden"
-            className="fixed left-0 top-0  z-40 flex h-screen
+        <motion.div
+          variants={navMotion}
+          animate="visible"
+          initial="hidden"
+          className="fixed left-0 top-0  z-40 flex h-screen
           w-full flex-col items-center  justify-center  gap-24 bg-white text-2xl font-bold"
-          >
-            <NavLinks
-              className=" flex flex-col gap-24 text-lg "
-              isMobile={true}
-            />
-          </motion.div>
-        </>
+        >
+          <NavLinks
+            className=" flex flex-col gap-24 text-lg "
+            isMobile={true}
+          />
+        </motion.div>
       )}
       <motion.div
         animate={{ opacity: 1, x: 0 }}

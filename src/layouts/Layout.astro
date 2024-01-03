@@ -1,8 +1,9 @@
 ---
-const { title } = Astro.props
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import ThemeIcon from './../components/ThemeIcon.astro';
+
+const { title } = Astro.props
 ---
 
 <html lang="en">
@@ -15,17 +16,14 @@ import ThemeIcon from './../components/ThemeIcon.astro';
     />
 		<title>{title}</title>
   </head>
-  <body>
+  <body class="mx-8 md:mx-16 lg:mx-32">
     <Nav client:load >
       <ThemeIcon slot="themeIcon"/>
     </Nav>  
+    <slot />
+    <Footer client:load/>
   </body>
 </html>
-<main>
-  <slot />
-  <!-- your content is injected here -->
-  <Footer client:load/>
-</main>
 
 <style>
   @font-face {
@@ -34,6 +32,9 @@ import ThemeIcon from './../components/ThemeIcon.astro';
   }
   body {
     font-family: melody-light;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 
   html.dark {

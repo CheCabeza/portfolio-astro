@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="relative mx-8 mb-24 flex justify-end pb-6 pt-12 font-medium md:mx-16 lg:mx-32 bg-blue">
+    <footer className="relative flex justify-end pt-6 pb-12 font-medium bg-blue">
       <motion.div
         animate={{ opacity: 1, x: 0 }}
         initial={{ opacity: 0, x: -25 }}
