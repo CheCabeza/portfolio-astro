@@ -69,6 +69,7 @@ export default function Nav(props: any) {
           />
         </motion.div>
       )}
+      {/* Desktop mode menu  */}
       <motion.div
         animate={{ opacity: 1, x: 0 }}
         initial={{ opacity: 0, x: 25 }}
