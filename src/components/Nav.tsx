@@ -60,8 +60,8 @@ export default function Nav(props: any) {
           variants={navMotion}
           animate="visible"
           initial="hidden"
-          className="fixed left-0 top-0  z-40 flex h-screen
-          w-full flex-col items-center  justify-center  gap-24 bg-white text-2xl font-bold"
+          className="bg-theme-base fixed left-0 top-0  z-40 flex h-screen
+          w-full flex-col items-center  justify-center  gap-24 text-2xl font-bold"
         >
           <NavLinks
             className=" flex flex-col gap-24 text-lg "

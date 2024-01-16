@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import "../styles/main.css";
 import ThemeIcon from './../components/ThemeIcon.astro';
 
 const { title } = Astro.props
@@ -19,31 +20,13 @@ const { title } = Astro.props
 		<title>{title}</title>
     <ViewTransitions/>
   </head>
-  <body class="mx-8 md:mx-16 lg:mx-32">
+  <body class="bg-theme-base flex flex-col min-h-screen  mx-10 md:mx-16 lg:mx-32 font-melodyLight">
     <Nav client:load transition:persist>
       <ThemeIcon slot="themeIcon"/>
     </Nav>  
-    <div transition:animate="none">
+    <div transition:animate="none" class="flex grow">
       <slot />
     </div>
     <Footer client:load transition:persist/>
   </body>
 </html>
-
-<style>
-  @font-face {
-    font-family: melody-light;
-    src: url('../../BLMelodyMono-Light.otf');
-  }
-  body {
-    font-family: melody-light;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
-  html[data-theme="dark"] {
-    background-color: #000000;
-    color: #fff;
-  }
-</style>
