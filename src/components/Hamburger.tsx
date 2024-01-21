@@ -6,7 +6,7 @@ interface NavProps {
   setToggled: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Nav({ toggled, setToggled }: NavProps) {
+export default function Nav({ toggled, setToggled }: Readonly<NavProps>) {
   return (
     <motion.div
       animate={{ opacity: 1, x: 0 }}
@@ -17,12 +17,12 @@ export default function Nav({ toggled, setToggled }: NavProps) {
     >
       <motion.span
         animate={{ rotateZ: toggled ? 45 : 0, y: toggled ? 8 : 0 }}
-        className="line-1 block h-0.5 w-8 rounded-lg bg-black"
+        className="line-1 block h-0.5 w-8 rounded-lg bg-theme-text"
       ></motion.span>
 
       <motion.span
         animate={{ width: toggled ? 0 : 32 }}
-        className="line-2 block h-0.5 rounded-lg bg-black"
+        className="line-2 block h-0.5 rounded-lg bg-theme-text"
       ></motion.span>
       <motion.span
         animate={{
@@ -30,7 +30,7 @@ export default function Nav({ toggled, setToggled }: NavProps) {
           y: toggled ? -8 : 0,
           width: 32,
         }}
-        className="line-3 block h-0.5 rounded-lg bg-black"
+        className="line-3 block h-0.5 rounded-lg bg-theme-text"
       ></motion.span>
     </motion.div>
   );

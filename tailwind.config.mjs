@@ -9,10 +9,13 @@ export default {
       fontSize: {
         main: "1.2rem",
         xl: "2.5rem",
+        slash: "9.5rem",
+        bigSlash: "19rem",
       },
       colors: {
         theme: {
-          base: "hsl(var(--color-theme) / <alpha-value>)",
+          text: "hsl(var(--color-text) / <alpha-value>)",
+          background: "hsl(var(--color-background) / <alpha-value>)",
         },
       },
     },

@@ -9,28 +9,24 @@
 
 @layer base {
   :root {
-    /* light mode defaults */
-    --color-theme-light: #000000;
+    --color-theme-black: 0deg 100% 0%;
+    --color-theme-white: 0deg 100% 100%;
 
-    /* dark mode defaults */
-    --color-theme-dark: #ffffff;
-
-    --color-theme: var(--color-theme-light);
-
-    color-scheme: light;
+    --color-text: var(--color-theme-black);
+    --color-background: var(--color-theme-white);
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-theme: var(--color-theme-dark);
-      color-scheme: dark;
+      --color-text: var(--color-theme-white);
+      --color-background: var(--color-theme-black);
     }
   }
   :root[data-theme="dark"] {
-    --color-theme: var(--color-theme-dark);
-    color-scheme: dark;
+    --color-text: var(--color-theme-white);
+    --color-background: var(--color-theme-black);
   }
   :root[data-theme="light"] {
-    --color-theme: var(--color-theme-light);
-    color-scheme: light;
+    --color-text: var(--color-theme-black);
+    --color-background: var(--color-theme-white);
   }
 }
