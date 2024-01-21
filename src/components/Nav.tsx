@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Hamburger from "./Hamburger";
 import NavLinks from "./NavLinks";
 
@@ -27,6 +27,12 @@ export const navLinks = [
 export default function Nav(props: any) {
   const [toggled, setToggled] = useState(false);
 
+  useEffect(() => {
+    document.addEventListener("astro:page-load", () => {
+      setToggled(false);
+    });
+  }, []);
+
   return (
     <nav className="relative flex justify-end pb-6 pt-12 font-medium">
       {/* Device mode menu  */}
@@ -35,8 +41,8 @@ export default function Nav(props: any) {
           variants={navMotion}
           animate="visible"
           initial="hidden"
-          className="fixed left-0 top-0  z-40 flex h-screen
-          w-full flex-col items-center  justify-center  gap-24 text-2xl font-bold bg-theme-background"
+          className="fixed left-0 top-0 z-40 flex h-screen
+          w-full flex-col items-center justify-center gap-24 text-2xl font-bold bg-theme-background"
         >
           <NavLinks
             className="flex flex-col gap-24 text-lg"

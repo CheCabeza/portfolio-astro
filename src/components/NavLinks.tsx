@@ -28,7 +28,7 @@ export default function NavLinks({
           key={id}
           variants={isMobile ? itemMotion : itemMotionDesktop}
           href={href}
-          onClick={() => setToggled(false)}
+          // onClick={() => setToggled(false)}
         >
           {name}
         </motion.a>

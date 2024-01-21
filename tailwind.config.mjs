@@ -7,8 +7,8 @@ export default {
         melodyLight: ["melody-light", "sans-serif"],
       },
       fontSize: {
-        main: "1.2rem",
-        xl: "2.5rem",
+        title: "1.4rem",
+        bigTitle: "3.75rem",
         slash: "9.5rem",
         bigSlash: "19rem",
       },
