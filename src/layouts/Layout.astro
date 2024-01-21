@@ -20,13 +20,13 @@ const { title } = Astro.props
 		<title>{title}</title>
     <ViewTransitions/>
   </head>
-  <body class="bg-theme-base flex flex-col min-h-screen  mx-10 md:mx-16 lg:mx-32 font-melodyLight">
+  <body class="bg-theme-base flex flex-col min-h-screen mx-10 md:mx-16 lg:mx-32 font-melodyLight">
     <Nav client:load transition:persist>
       <ThemeIcon slot="themeIcon"/>
     </Nav>  
-    <div transition:animate="none" class="flex grow">
+	  <main transition:animate="none" class="flex grow items-center">
       <slot />
-    </div>
+    </main>
     <Footer client:load transition:persist/>
   </body>
 </html>
