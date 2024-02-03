@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Hamburger from "./Hamburger";
 import NavLinks from "./NavLinks";
 
