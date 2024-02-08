@@ -1,38 +1,62 @@
 ---
+import type { Resume } from '../interfaces/ResumeInterface';
 import Layout from '../layouts/Layout.astro';
+import { formatDate, formatUrl } from '../utils/formatters';
+
+const response = await fetch(import.meta.env.RESUME_URL);
+const resume: Resume = await response.json();
 ---
 
 <Layout title="Chema Cabeza">
     <section class="flex justify-left flex-col w-full gap-9">
         <article>
             <span class="text-[200px] md:text-[250px]">A</span>
-            <p class="text-3xl md:text-base md:w-3/6">I am a Barcelona-based FullStack Developer with an advanced understanding of the tech industry. I am passionate about continuously developing my knowledge of new technologies and enjoy sharing my insights with others. I revel in developing new professional relationships with customers and stakeholders on a daily. \n I would describe myself as a friendly, level-headed individual who is self-motivated, works well under pressure and enjoys a fast paced working environment. I relish in team-based  roles whilst also being able to work independently as required, putting my excellent written and oral communication skills and eye for detail into use. I am outcome-orientated and understand the importance of delivering on actions in a timely manner in order to achieve high standards.</p>
+            <p class="md:text-base md:w-3/6">{resume.basics.summary}</p>
         </article>
-        <div class="flex flex-row justify-between">
+        <div class="flex flex-row justify-between flex-wrap">
             <article class="flex flex-col gap-5 md:w-2/6">
-                <span class="text-3xl">Experience</span>
-                <span class="font-bold">April 2022 - Present</span>
-                <span class="font-bold">April 2022 - Present</span>
-                <span class="font-bold">Web Developer<br>Pasiona</span>
-                <div>
-                    <li>Design, Develop, Maintain, Integrate and Deliver Javascript components. This being, depending on the business priorities: Javascript components based on internal framework/SDK, UI capabilities using reactJS and Backend services using NodeJS/Express.</li>
-                    <li>Collaborate on features sizing, refinement and planning</li>
-                    <li>Perform frequent code reviews</li>
-                    <li>Write and run automated test scripts using test framework</li>
-                    <li>Apply TDD principles as part of the development cycle</li>
-                </div>
+                <span class="text-4xl">Experience</span>
+                {resume.work.map(({startDate, endDate, position, name, highlights})=> {
+                    return (
+                        <span class="font-bold">{startDate} - {endDate}</span>
+                        <span class="font-bold">{position}<br>{name}</span>
+                        <div class="flex flex-col gap-3">
+                            {highlights.map((highlight) => {
+                                return (
+                                    <li>{highlight}</li>
+                                )
+                            })}
+                        </div>
+                    )
+                })}
             </article>
             <article class="flex flex-col gap-5 md:w-2/6">
-                <span>Skills</span>
+                <span class="text-4xl">Skills</span>
+                {resume.skills.map((skill) => {
+                    return (
+                        <span class="font-bold">{skill.name}</span>
+                        <div class="flex flex-row gap-2">
+                        {skill.keywords.map((keyword) => {
+                            return (
+                                <span>{keyword}</span>
+                                <span>//</span>
+                            )
+                        })}
+                        </div>
+                    )
+                })}
             </article>
             <article class="flex flex-col gap-5 md:w-2/6">
-                <span>Education</span>
-                <span class="font-bold">April 2021 - June 2021</span>
-                <span class="font-bold">ISDI Coders</span>
-                <span>Full-Stack Web Developer Bootcamp</span>
-                <a href="https://isdicoders.com/" target="_blank">isdicoders.com</a>
+                <span class="text-4xl">Education</span>
+                {resume.education.map(({startDate, endDate, institution, studyType, url }) => {
+                    return (
+                        <span class="font-bold">{formatDate(startDate)} - {formatDate(endDate)}</span>
+                        <span class="font-bold">{institution}</span>
+                        <span>{studyType}</span>
+                        <a href={url} target="_blank">{formatUrl(url)}</a>
+                    )
+                })}
             </article>
         </div>
     </section>
 </Layout>
-
