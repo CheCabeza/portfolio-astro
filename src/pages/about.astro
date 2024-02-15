@@ -14,7 +14,7 @@ const resume: Resume = await response.json();
             <p class="md:text-base md:w-3/6">{resume.basics.summary}</p>
         </article>
         <div class="flex flex-row justify-between flex-wrap">
-            <article class="flex flex-col gap-5 md:w-2/6">
+            <article class="flex flex-col gap-5 md:w-[30%] ">
                 <span class="text-4xl">Experience</span>
                 {resume.work.map(({startDate, endDate, position, name, highlights})=> {
                     return (
@@ -23,30 +23,32 @@ const resume: Resume = await response.json();
                         <div class="flex flex-col gap-3">
                             {highlights.map((highlight) => {
                                 return (
-                                    <li>{highlight}</li>
+                                    <ul>
+                                        <li>&bull; {highlight}</li>
+                                    </ul>
                                 )
                             })}
                         </div>
                     )
                 })}
             </article>
-            <article class="flex flex-col gap-5 md:w-2/6">
+            <article class="flex flex-col gap-5 md:w-[30%]">
                 <span class="text-4xl">Skills</span>
-                {resume.skills.map((skill) => {
+                {resume.skills.map(({name, keywords}) => {
                     return (
-                        <span class="font-bold">{skill.name}</span>
-                        <div class="flex flex-row gap-2">
-                        {skill.keywords.map((keyword) => {
-                            return (
-                                <span>{keyword}</span>
-                                <span>//</span>
-                            )
+                        <span class="font-bold">{name}</span>
+                        <div class="flex flex-row gap-2 flex-wrap">
+                        {keywords.map((keyword, index) => {
+                            return index < keywords.length-1 ? (
+                                <span>{keyword}</span>     
+                                <span>//</span>                         
+                            ) : <span>{keyword}</span>                                   
                         })}
                         </div>
                     )
                 })}
             </article>
-            <article class="flex flex-col gap-5 md:w-2/6">
+            <article class="flex flex-col gap-5 md:w-[30%]">
                 <span class="text-4xl">Education</span>
                 {resume.education.map(({startDate, endDate, institution, studyType, url }) => {
                     return (
