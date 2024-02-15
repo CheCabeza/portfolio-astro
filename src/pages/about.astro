@@ -14,7 +14,7 @@ const resume: Resume = await response.json();
             <p class="md:text-base md:w-3/6">{resume.basics.summary}</p>
         </article>
         <div class="flex flex-row justify-between flex-wrap">
-            <article class="flex flex-col gap-5 md:w-[30%] ">
+            <article class="flex flex-col gap-5 md:w-[32%] ">
                 <span class="text-4xl">Experience</span>
                 {resume.work.map(({startDate, endDate, position, name, highlights})=> {
                     return (
@@ -32,7 +32,7 @@ const resume: Resume = await response.json();
                     )
                 })}
             </article>
-            <article class="flex flex-col gap-5 md:w-[30%]">
+            <article class="flex flex-col gap-5 md:w-[32%]">
                 <span class="text-4xl">Skills</span>
                 {resume.skills.map(({name, keywords}) => {
                     return (
@@ -48,7 +48,7 @@ const resume: Resume = await response.json();
                     )
                 })}
             </article>
-            <article class="flex flex-col gap-5 md:w-[30%]">
+            <article class="flex flex-col gap-5 md:w-[32%]">
                 <span class="text-4xl">Education</span>
                 {resume.education.map(({startDate, endDate, institution, studyType, url }) => {
                     return (
