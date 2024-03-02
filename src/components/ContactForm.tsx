@@ -15,17 +15,13 @@ export default function ContactForm() {
         import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
         form.current,
         {
-          publicKey: import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY,
+          publicKey: "a",
         }
       )
-      .then(
-        (response) => {
-          console.log("SUCCESS!", response.status, response.text);
-        },
-        (error) => {
-          console.log("FAILED...", error);
-        }
-      );
+      .then((response) => {
+        console.log("Email sent!", response.status, response.text);
+      })
+      .catch((error) => console.error(error.text));
   };
 
   return (
@@ -35,7 +31,7 @@ export default function ContactForm() {
       <label htmlFor="message">Message</label>
       <textarea name="message" id="message" />
       <button type="submit" value="Send">
-        Enviar
+        Send
       </button>
     </form>
   );
