@@ -1,5 +1,6 @@
 import emailjs from "@emailjs/browser";
 import { useRef, type FormEvent } from "react";
+import { toast } from "sonner";
 
 export default function ContactForm() {
   const form = useRef<HTMLFormElement>(null);
@@ -15,13 +16,17 @@ export default function ContactForm() {
         import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
         form.current,
         {
-          publicKey: "a",
+          publicKey: import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY,
         }
       )
       .then((response) => {
-        console.log("Email sent!", response.status, response.text);
+        if (response.status === 200) {
+          toast.success("Message sent successfully.");
+        }
       })
-      .catch((error) => console.error(error.text));
+      .catch(() =>
+        toast.error("Message couldn't been sent. Please try again.")
+      );
   };
 
   return (
