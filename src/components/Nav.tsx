@@ -44,11 +44,7 @@ export default function Nav(props: any) {
           className="fixed left-0 top-0 z-40 flex h-screen
           w-full flex-col items-center justify-center gap-24 text-2xl font-bold bg-theme-background"
         >
-          <NavLinks
-            className="flex flex-col gap-24 text-lg"
-            isMobile={true}
-            setToggled={setToggled}
-          />
+          <NavLinks className="flex flex-col gap-24 text-lg" isMobile={true} />
         </motion.div>
       )}
       {/* Desktop mode menu  */}
@@ -58,11 +54,7 @@ export default function Nav(props: any) {
         transition={{ delay: 0.35 }}
         className="hidden xl:flex xl:items-center xl:justify-center xl:gap-12 xl:text-lg"
       >
-        <NavLinks
-          className="flex gap-12"
-          isMobile={false}
-          setToggled={setToggled}
-        />
+        <NavLinks className="flex gap-12" isMobile={false} />
         {props.themeIcon}
       </motion.div>
 

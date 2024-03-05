@@ -31,10 +31,25 @@ export default function ContactForm() {
 
   return (
     <form ref={form} onSubmit={sendEmail}>
-      <label htmlFor="from_email">Email</label>
-      <input type="email" name="from_email" id="from_email" />
-      <label htmlFor="message">Message</label>
-      <textarea name="message" id="message" />
+      <div>
+        <label htmlFor="from_email" className="hidden">
+          Email
+        </label>
+        <input
+          type="email"
+          name="from_email"
+          id="from_email"
+          className="outline-black"
+          placeholder="Email"
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="message" className="hidden">
+          Message
+        </label>
+        <textarea name="message" id="message" placeholder="Message" required />
+      </div>
       <button type="submit" value="Send">
         Send
       </button>
