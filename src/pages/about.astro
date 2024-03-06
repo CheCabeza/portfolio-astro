@@ -1,7 +1,7 @@
 ---
-import type { Resume } from '../interfaces/ResumeInterface';
-import Layout from '../layouts/Layout.astro';
-import { formatDate, formatUrl } from '../utils/formatters';
+import type { Resume } from '@/interfaces/ResumeInterface';
+import Layout from '@/layouts/Layout.astro';
+import { formatDate, formatUrl } from '@/utils/formatters';
 
 const response = await fetch(import.meta.env.RESUME_URL);
 const resume: Resume = await response.json();

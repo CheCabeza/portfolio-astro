@@ -1,3 +1,4 @@
+import "@/styles/contact-form.css";
 import emailjs from "@emailjs/browser";
 import { useRef, type FormEvent } from "react";
 import { toast } from "sonner";
@@ -30,29 +31,42 @@ export default function ContactForm() {
   };
 
   return (
-    <form ref={form} onSubmit={sendEmail}>
-      <div>
-        <label htmlFor="from_email" className="hidden">
-          Email
-        </label>
+    <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4">
+      <div className="form__group field">
         <input
           type="email"
           name="from_email"
           id="from_email"
-          className="outline-black"
+          className="form__field"
           placeholder="Email"
+          style={{ fontSize: "20px" }}
           required
         />
+        <label htmlFor="from_email" className="form__label">
+          Email
+        </label>
       </div>
-      <div>
-        <label htmlFor="message" className="hidden">
+      <div className="form__group field">
+        <textarea
+          name="message"
+          id="message"
+          className="form__field"
+          placeholder="Message"
+          required
+        />
+        <label htmlFor="message" className="form__label">
           Message
         </label>
-        <textarea name="message" id="message" placeholder="Message" required />
       </div>
-      <button type="submit" value="Send">
-        Send
-      </button>
+      <div className="flex max-w-[600px] justify-center pt-6">
+        <button
+          type="submit"
+          value="Send"
+          className="w-48 align-middle font-bold text-center transition-all py-3 px-6 border border-gray-900 text-gray-900 hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] rounded-full"
+        >
+          Send
+        </button>
+      </div>
     </form>
   );
 }

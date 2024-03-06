@@ -3,6 +3,9 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "baseUrl": "C:/Users/ganon/Desktop/Coding/portfolio-astro",
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }
