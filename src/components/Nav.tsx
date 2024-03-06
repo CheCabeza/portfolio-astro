@@ -44,7 +44,11 @@ export default function Nav(props: any) {
           className="fixed left-0 top-0 z-40 flex h-screen
           w-full flex-col items-center justify-center gap-24 text-2xl font-bold bg-theme-background"
         >
-          <NavLinks className="flex flex-col gap-24 text-lg" isMobile={true} />
+          <NavLinks
+            className="flex flex-col gap-24 text-lg items-center"
+            isMobile={true}
+          />
+          {props.themeIcon}
         </motion.div>
       )}
       {/* Desktop mode menu  */}
