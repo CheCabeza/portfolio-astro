@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+
 import Hamburger from "./Hamburger";
 import NavLinks from "./NavLinks";
 
@@ -24,9 +25,8 @@ export const navLinks = [
   { name: "Contact", href: "/contact", id: 5 },
 ];
 
-export default function Nav(props: any) {
+export default function Nav({ themeIcon }: any) {
   const [toggled, setToggled] = useState(false);
-
   useEffect(() => {
     document.addEventListener("astro:page-load", () => {
       setToggled(false);
@@ -48,7 +48,7 @@ export default function Nav(props: any) {
             className="flex flex-col gap-24 text-lg items-center"
             isMobile={true}
           />
-          {props.themeIcon}
+          {themeIcon}
         </motion.div>
       )}
       {/* Desktop mode menu  */}
@@ -59,9 +59,8 @@ export default function Nav(props: any) {
         className="hidden xl:flex xl:items-center xl:justify-center xl:gap-12 xl:text-lg"
       >
         <NavLinks className="flex gap-12" isMobile={false} />
-        {props.themeIcon}
+        {themeIcon}
       </motion.div>
-
       <Hamburger toggled={toggled} setToggled={setToggled} />
     </nav>
   );
