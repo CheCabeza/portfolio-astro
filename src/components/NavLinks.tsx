@@ -32,7 +32,7 @@ export default function NavLinks({
           {name}
           {index === selected && (
             <motion.div
-              className="w-full h-1 rounded relative bg-black"
+              className="w-full h-0.5 rounded relative bg-black"
               layoutId="underline"
             />
           )}
