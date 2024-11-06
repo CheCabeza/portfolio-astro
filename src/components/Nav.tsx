@@ -27,8 +27,10 @@ export const navLinks = [
 
 export default function Nav({ themeIcon }: any) {
   const [toggled, setToggled] = useState(false);
+  const [selected, setSelected] = useState(0);
+
   useEffect(() => {
-    document.addEventListener("astro:page-load", () => {
+    document.addEventListener("astro:after-swap", () => {
       setToggled(false);
     });
   }, []);
@@ -46,6 +48,8 @@ export default function Nav({ themeIcon }: any) {
         >
           <NavLinks
             className="flex flex-col gap-24 text-lg items-center"
+            selected={selected}
+            setSelected={setSelected}
             isMobile={true}
           />
           {themeIcon}
@@ -58,7 +62,12 @@ export default function Nav({ themeIcon }: any) {
         transition={{ delay: 0.35 }}
         className="hidden xl:flex xl:items-center xl:justify-center xl:gap-12 xl:text-lg"
       >
-        <NavLinks className="flex gap-12" isMobile={false} />
+        <NavLinks
+          className="flex gap-12"
+          selected={selected}
+          setSelected={setSelected}
+          isMobile={false}
+        />
         {themeIcon}
       </motion.div>
       <Hamburger toggled={toggled} setToggled={setToggled} />
