@@ -16,8 +16,8 @@ export default function Nav({ toggled, setToggled }: Readonly<NavProps>) {
       className={"burger z-50 cursor-pointer space-y-1.5 xl:hidden"}
     >
       <motion.span
-        animate={{ rotateZ: toggled ? 45 : 0, y: toggled ? 8 : 0 }}
-        className="line-1 block h-0.5 w-8 rounded-lg bg-theme-text"
+        animate={{ rotateZ: toggled ? 45 : 0, y: toggled ? 7 : 0 }}
+        className="line-1 block h-0.5 rounded-lg bg-theme-text"
       ></motion.span>
 
       <motion.span
@@ -27,7 +27,7 @@ export default function Nav({ toggled, setToggled }: Readonly<NavProps>) {
       <motion.span
         animate={{
           rotateZ: toggled ? -45 : 0,
-          y: toggled ? -8 : 0,
+          y: toggled ? -7 : 0,
           width: 32,
         }}
         className="line-3 block h-0.5 rounded-lg bg-theme-text"
