@@ -6,9 +6,13 @@ import Nav from "@/components/Nav";
 import ThemeIcon from '@/components/ThemeIcon.astro';
 import "@/styles/main.css";
 import "@/styles/sonner-style.css";
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 
-const { title } = Astro.props
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -21,7 +25,7 @@ const { title } = Astro.props
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
-    <ViewTransitions/>
+    <ClientRouter/>
   </head>
   <body class="bg-theme-background text-theme-text flex flex-col min-h-screen mx-10 md:mx-16 lg:mx-32 font-melodyLight">
       <Nav client:load transition:persist>
