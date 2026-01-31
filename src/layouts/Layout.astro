@@ -28,7 +28,7 @@ const { title } = Astro.props;
     <ClientRouter/>
   </head>
   <body class="bg-theme-background text-theme-text flex flex-col min-h-screen mx-10 md:mx-16 lg:mx-32 font-melodyLight">
-      <Nav client:load transition:persist>
+      <Nav client:load>
         <ThemeIcon slot="themeIcon"/>
       </Nav>  
 	  <main transition:animate="none" class="flex grow items-center">
