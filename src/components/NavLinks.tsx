@@ -18,46 +18,38 @@ const NavLInks = memo(function NavLinks({
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const currentPath = window.location.pathname;
-    const foundIndex = navLinks.findIndex(link => link.href === currentPath);
-    setActiveIndex(foundIndex !== -1 ? foundIndex : 0);
+    const updateActiveIndex = () => {
+      const currentPath = window.location.pathname;
+      const foundIndex = navLinks.findIndex(link => link.href === currentPath);
+      setActiveIndex(foundIndex !== -1 ? foundIndex : 0);
+    };
+
+    updateActiveIndex();
+    document.addEventListener('astro:after-swap', updateActiveIndex);
+    
+    return () => {
+      document.removeEventListener('astro:after-swap', updateActiveIndex);
+    };
   }, []);
-
-  const itemMotion = {
-    visible: { opacity: 1, x: 0 },
-    hidden: { opacity: 0, x: -100 },
-  };
-  const itemMotionDesktop = {
-    visible: { opacity: 1, x: 0 },
-    hidden: { opacity: 1, x: 0 },
-  };
-
-  const handleClick = (href: string, e: React.MouseEvent) => {
-    if (isMobile) {
-      e.preventDefault();
-      window.location.href = href;
-    }
-  };
 
   return (
     <div className={className}>
       {navLinks.map(({ name, href, id }, index) => (
         <motion.a
           key={id}
-          variants={isMobile ? itemMotion : itemMotionDesktop}
-          onClick={(e) => handleClick(href, e)}
+          onClick={() => setSelected(index)}
           href={href}
+          className="block"
         >
           {name}
-          {index === activeIndex && !isMobile ? (
+          {index === activeIndex && !isMobile && (
             <motion.div
               className="w-full h-0.5 rounded relative bg-black"
               layoutId="underline"
             />
-          ) : (
-            index === activeIndex && (
-              <div className="w-full h-0.5 rounded relative bg-black" />
-            )
+          )}
+          {index === activeIndex && isMobile && (
+            <div className="w-full h-0.5 rounded relative bg-black mt-1" />
           )}
         </motion.a>
       ))}
