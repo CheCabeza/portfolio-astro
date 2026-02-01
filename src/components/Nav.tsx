@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import Hamburger from "./Hamburger";
 import NavLinks from "./NavLinks";
+import ThemeIcon from "./ThemeIcon";
 
 export const navLinks = [
   { name: "Home", href: "/", id: 1 },
@@ -11,7 +12,7 @@ export const navLinks = [
   { name: "Contact", href: "/contact", id: 5 },
 ];
 
-export default function Nav({ themeIcon }: any) {
+export default function Nav() {
   const [toggled, setToggled] = useState(false);
   const [selected, setSelected] = useState(0);
 
@@ -42,7 +43,7 @@ export default function Nav({ themeIcon }: any) {
             setSelected={setSelected}
             isMobile={true}
           />
-          {themeIcon}
+          <ThemeIcon />
         </div>
       </motion.div>
       {/* Overlay backdrop */}
@@ -63,7 +64,7 @@ export default function Nav({ themeIcon }: any) {
           setSelected={setSelected}
           isMobile={false}
         />
-        {themeIcon}
+        <ThemeIcon />
       </div>
       <Hamburger toggled={toggled} setToggled={setToggled} />
     </nav>
