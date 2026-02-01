@@ -16,8 +16,10 @@ const NavLInks = memo(function NavLinks({
   isMobile,
 }: Readonly<NavLinkProps>) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const updateActiveIndex = () => {
       const currentPath = window.location.pathname;
       const foundIndex = navLinks.findIndex(link => link.href === currentPath);
@@ -42,7 +44,7 @@ const NavLInks = memo(function NavLinks({
           className="block"
         >
           {name}
-          {index === activeIndex && !isMobile && (
+          {index === activeIndex && !isMobile && mounted && (
             <motion.div
               className="w-full h-0.5 rounded relative bg-black"
               layoutId="underline"
